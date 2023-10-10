@@ -1,5 +1,6 @@
 package com.github.maikoncarlo.designer.patterns;
 
+import com.github.maikoncarlo.designer.patterns.desconto.CalculadoraDeDescontos;
 import com.github.maikoncarlo.designer.patterns.imposto.CalculadoraDeImpostos;
 import com.github.maikoncarlo.designer.patterns.imposto.ICMS;
 import com.github.maikoncarlo.designer.patterns.imposto.ISS;
@@ -19,7 +20,7 @@ class DesignerPatternsApplicationTests {
 	void testeImposto_ICMS() {
 
 		var value = BigDecimal.valueOf(1567.45);
-		var orcamento = new Orcamento(value);
+		var orcamento = new Orcamento(value, 1);
 
 		var calculadora = new CalculadoraDeImpostos();
 		var atual = calculadora.calcular(orcamento, new ICMS());
@@ -33,12 +34,26 @@ class DesignerPatternsApplicationTests {
 	void testeImposto_ISS() {
 
 		var value = BigDecimal.valueOf(1000.45);
-		var orcamento = new Orcamento(value);
+		var orcamento = new Orcamento(value, 1);
 
 		var calculadora = new CalculadoraDeImpostos();
 		var atual = calculadora.calcular(orcamento, new ISS());
 
 		var expected = new BigDecimal("60.0270");
+		Assertions.assertEquals(expected, atual, "erro no resultado esperado");
+	}
+
+	@Test
+	@DisplayName(value = "deve retornar o valor do desconto quantidadeItens maior que 5 com sucesso")
+	void testeDesconto_QtddMaior5() {
+
+		var value = BigDecimal.valueOf(1000.00);
+		var orcamento = new Orcamento(value, 6);
+
+		var calculadora = new CalculadoraDeDescontos();
+		var atual = calculadora.calcular(orcamento);
+
+		var expected = new BigDecimal("50.000");
 		Assertions.assertEquals(expected, atual, "erro no resultado esperado");
 	}
 

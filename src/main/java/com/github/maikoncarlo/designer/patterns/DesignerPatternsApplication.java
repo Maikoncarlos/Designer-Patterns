@@ -15,8 +15,8 @@ public class DesignerPatternsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DesignerPatternsApplication.class, args);
 		var calculadoraDeImpostos = new CalculadoraDeImpostos();
-		calculadoraDeImpostos.calcular(new Orcamento(BigDecimal.valueOf(1567.45)), new ICMS());
-		calculadoraDeImpostos.calcular(new Orcamento(BigDecimal.valueOf(1000.45)), new ISS());
+		calculadoraDeImpostos.calcular(new Orcamento(BigDecimal.valueOf(1567.45), 1), new ICMS());
+		calculadoraDeImpostos.calcular(new Orcamento(BigDecimal.valueOf(1000.45), 1), new ISS());
 	}
 
 }
