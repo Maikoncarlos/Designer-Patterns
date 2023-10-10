@@ -8,12 +8,10 @@ public class CalculadoraDeDescontos {
 
     public BigDecimal calcular(Orcamento orcamento) {
 
-        if (orcamento.quantidadeIten() > 5)
-            return orcamento.valor().multiply(BigDecimal.valueOf(0.05));
+        var desconto = new DescontoParaQuantidadeItenMaiorQueCinco(
+                new DescontoParaValorOrcamentoMaiorQueQuinhentosReais(
+                        new SemDesconto()));
 
-        if (orcamento.valor().compareTo(BigDecimal.valueOf(500.00)) > 0)
-            return orcamento.valor().multiply(BigDecimal.valueOf(0.1));
-
-        return BigDecimal.ZERO;
+        return desconto.calcular(orcamento);
     }
 }

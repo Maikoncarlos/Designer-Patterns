@@ -45,7 +45,7 @@ class DesignerPatternsApplicationTests {
 
 	@Test
 	@DisplayName(value = "deve retornar o valor do desconto quantidadeItens maior que 5 com sucesso")
-	void testeDesconto_QtddMaior5() {
+	void testeDesconto_QtddMaiorQue5() {
 
 		var value = BigDecimal.valueOf(1000.00);
 		var orcamento = new Orcamento(value, 6);
@@ -56,5 +56,34 @@ class DesignerPatternsApplicationTests {
 		var expected = new BigDecimal("50.000");
 		Assertions.assertEquals(expected, atual, "erro no resultado esperado");
 	}
+
+	@Test
+	@DisplayName(value = "deve retornar o valor do desconto valor orcamento maior que 500.00 com sucesso")
+	void testeDesconto_ValorMaiorQue500() {
+
+		var value = BigDecimal.valueOf(1000.00);
+		var orcamento = new Orcamento(value, 2);
+
+		var calculadora = new CalculadoraDeDescontos();
+		var atual = calculadora.calcular(orcamento);
+
+		var expected = new BigDecimal("100.00");
+		Assertions.assertEquals(expected, atual, "erro no resultado esperado");
+	}
+
+	@Test
+	@DisplayName(value = "deve retornar Zero sem desconto com sucesso")
+	void testeDesconto_SemDesconto() {
+
+		var value = BigDecimal.valueOf(100.00);
+		var orcamento = new Orcamento(value, 1);
+
+		var calculadora = new CalculadoraDeDescontos();
+		var atual = calculadora.calcular(orcamento);
+
+		var expected = BigDecimal.ZERO;
+		Assertions.assertEquals(expected, atual, "erro no resultado esperado");
+	}
+
 
 }
