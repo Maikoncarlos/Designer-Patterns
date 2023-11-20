@@ -4,9 +4,9 @@ import com.github.maikoncarlo.designer.patterns.orcamento.Orcamento;
 
 import java.math.BigDecimal;
 
-public class DescontoParaQuantidadeItenMaiorQueCinco extends Desconto{
+public class DescontoParaQuantidadeItensMaiorQueCinco extends Desconto{
 
-    public DescontoParaQuantidadeItenMaiorQueCinco(Desconto proximo) {
+    public DescontoParaQuantidadeItensMaiorQueCinco(Desconto proximo) {
         super(proximo);
     }
 
