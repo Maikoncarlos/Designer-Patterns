@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 public class ICMS implements TipoImposto{
     @Override
     public BigDecimal calcular(Orcamento orcamento) {
-        return orcamento.valor().multiply(BigDecimal.valueOf(0.1));
+        return orcamento.getValor().multiply(BigDecimal.valueOf(0.1));
     }
 }
