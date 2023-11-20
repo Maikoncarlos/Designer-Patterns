@@ -4,17 +4,19 @@ import com.github.maikoncarlo.designer.patterns.orcamento.Orcamento;
 
 import java.math.BigDecimal;
 
-public class DescontoParaQuantidadeItensMaiorQueCinco extends Desconto{
+public class DescontoParaQuantidadeItensMaiorQueCinco extends Desconto {
 
     public DescontoParaQuantidadeItensMaiorQueCinco(Desconto proximo) {
         super(proximo);
     }
 
-    public BigDecimal calcular(Orcamento orcamento) {
+    @Override
+    public BigDecimal efetuarCalculo(Orcamento orcamento) {
+        return orcamento.valor().multiply(BigDecimal.valueOf(0.05));
+    }
 
-        if (orcamento.quantidadeIten() > 5)
-            return orcamento.valor().multiply(BigDecimal.valueOf(0.05));
-
-        return proximo.calcular(orcamento);
+    @Override
+    public boolean deveAplicar(Orcamento orcamento) {
+        return orcamento.quantidadeIten() > 5;
     }
 }
