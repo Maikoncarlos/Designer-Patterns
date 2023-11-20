@@ -10,7 +10,7 @@ public class GerarPedidoHandler {
         var orcamento = new Orcamento(pedido.getValorOrcamento(), pedido.getQuantidadeItens());
         var novoPedido = new Pedido(pedido.getCliente(), LocalDateTime.now(), orcamento );
 
-        System.out.println("Salvar pedido no banco de Dados" + novoPedido);
-        System.out.println("Enviar email para cliente com os dados e situação do pedido" + novoPedido);
+        System.out.println("Chama a Classe para Salvar/Atualizar pedido no banco de Dados" + novoPedido);
+        System.out.println("Chama a Classe para Enviar email para cliente com os dados e situação do pedido" + novoPedido);
     }
 }
