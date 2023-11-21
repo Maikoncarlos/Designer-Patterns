@@ -13,6 +13,15 @@ public class Pedido {
         return cliente;
     }
 
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "cliente='" + cliente + '\'' +
+                ", data=" + data +
+                ", orcamento=" + orcamento +
+                '}';
+    }
+
     public LocalDateTime getData() {
         return data;
     }
