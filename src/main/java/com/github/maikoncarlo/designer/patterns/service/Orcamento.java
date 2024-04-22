@@ -1,4 +1,4 @@
-package com.github.maikoncarlo.designer.patterns.orcamento;
+package com.github.maikoncarlo.designer.patterns.service;
 
 import java.math.BigDecimal;
 
